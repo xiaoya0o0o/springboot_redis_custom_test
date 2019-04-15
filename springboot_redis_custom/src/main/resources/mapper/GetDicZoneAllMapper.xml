@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demo.dao.GetDicZoneAllDao">
+    <resultMap id="BaseResultMap" type="com.demo.entity.DicZoneAllEntity">
+        <result column="cityid" property="cityId"/>
+        <result column="PARENTNAME" property="cityName"/>
+        <result column="regionid" property="countyId"/>
+        <result column="name" property="countyName"/>
+    </resultMap>
+
+    <select id="getDicZoneAllList" resultMap="BaseResultMap" parameterType="map">
+        select  cityid,PARENTNAME,regionid,name
+        from DIC_ZONE_ALL
+        where 1=1
+
+         <if test="id!=nulll and id !=''" >
+             and cityid =#{id}
+         </if>
+    </select>
+
+    <select id="getDicZoneAllList_SENSOR1A" resultMap="BaseResultMap" parameterType="map">
+        select  cityid,PARENTNAME,regionid,name
+        from DIC_ZONE_ALL
+        where cityid =2
+    </select>
+
+    <select id="getDicZoneAllList_SENSOR2A" resultMap="BaseResultMap" parameterType="map">
+        select  cityid,PARENTNAME,regionid,name
+        from DIC_ZONE_ALL
+        where cityid =#{cityid}
+    </select>
+
+</mapper>
